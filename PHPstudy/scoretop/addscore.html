@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ADD Score</title>
+	<meta charset="utf-8">
+	<style>
+	h2{margin:0 20px;padding:0;color: orange;}
+	label{display:inline-block;width:100px;text-align: right;margin-top: 10px;margin-right:5px;}
+	#submit{margin: 10px 50px;border: 1px solid green;border-radius: 10px;}
+	span{color:red;margin-left: 50px;}
+	</style>
+</head>
+<body>
+	<h2>there is add score!!!</h2>
+	<form method="post" enctype="multipart/form-data" action="addscore.php">
+		<input type="hidden" name="MAX_SIZE" value="32768">
+		<label for="name">name:</label>
+		<input type="text" id="name"  name="name"><br/>
+		<label for="score">score:</label>
+		<input type="text" id="score" name="score"><br/>
+		<label for="scoreshot">score shot:</label>
+		<input type="file" id="scoreshot"  name="scoreshot"><br/>
+		<input type="submit" id="submit" value="add score" name="submit">
+        <input type="text" id="captcha" />
+        <img src="captcha.php" alt="验证码" />
+	</form>
+	<script>
+			
+			var img = document.getElementsByTagName('img')[0];
+			var captcha = document.getElementById('captcha');
+			if(document.body.lastElementChild.tagname=="span"){
+				document.body.removeChild(document.body.childElementLast);
+			}
+			var oForm = document.forms[0];
+			var oP = document.createElement("span");
+			oForm.onsubmit = function(){
+				alert(getCookie('CHPTCHA'));
+				
+				if(isNaN(Number(oForm.score.value))){
+					oP.innerHTML = "score is int ";
+					document.body.append(oP);
+					return false;
+				}
+				
+				if(getCookie('CHPTCHA') !== captcha.value){
+					oP.innerHTML = "验证码有误";
+					document.body.append(oP);
+					return false;
+				}
+				
+			}
+			
+			
+			function getCookie( str ){
+				var arr = document.cookie.split(";");
+				for(var i=0; i<arr.length; i++){
+					var ar = arr[i].split("=");	
+					var index = ar.indexOf(str);
+					if( index !== -1){
+						return ar[index+1];
+					}
+				}
+			}
+			
+			
+			//刷新验证码
+			img.onclick = function(){
+				//this.setAttribute('src', 'captcha.php?'+Math.random());
+				this.src = 'captcha.php?'+Math.random();
+				return false;
+			}
+</script>
+</body>
+</html>

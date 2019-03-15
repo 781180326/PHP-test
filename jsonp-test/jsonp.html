@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script>
+		
+		function calljsonp(result){
+			obj = result;
+			alert(obj.name);
+		}
+		
+		var js = document.createElement('script');
+		js.type = "text/javascript";
+		js.src="/myclass/jsonp-test/js.php?callback=calljsonp";
+		js.onload = function(){
+			console.log(1);
+		}
+		document.getElementsByTagName('head')[0].append(js);
+		//弹出了！！！！
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

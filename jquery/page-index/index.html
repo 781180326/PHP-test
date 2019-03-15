@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>js分页</title>
+    <style>
+        #container{
+            width:50%;
+            height:500px;
+            margin:0 auto;
+            background-color:#ccc;
+            border-radius:4px;
+        }
+        #container p{
+        	height:30px;
+        	line-height: 30px;
+        }
+        #page{
+            width:50%;
+            height:30px;
+            margin:20px auto;
+            text-align:center;
+        }
+        #page a{
+            display:inline-block;
+            padding-left:8px;
+            padding-right:8px;
+            line-height:30px;
+            border:1px solid #ccc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+    <div id="container">
+        <p><span></span><strong></strong></p>
+        <p><span></span><strong></strong></p>
+        <p><span></span><strong></strong></p>
+        <p><span></span><strong></strong></p>
+        <p><span></span><strong></strong></p>
+        <p><span></span><strong></strong></p>
+        <p><span></span><strong></strong></p>
+        <p><span></span><strong></strong></p>
+        <p><span></span><strong></strong></p>
+        <p><span></span><strong></strong></p>
+    </div>
+    <ul id="page">
+        <a href="#" data-id="-1">上一页</a>
+        <a href="#" data-id="0">1</a>
+        <a href="#" data-id="1">2</a>
+        <a href="#" data-id="2">3</a>
+        <a href="#" data-id="3">4</a>
+        <a href="#" data-id="4">5</a>
+        <a href="#" data-id="5">6</a>
+        <a href="#" data-id="9">下一页</a>
+    </ul>
+
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementById('container');
+            var aP = oDiv.getElementsByTagName('p');
+            var oUl = document.getElementById('page');
+            var aA = oUl.getElementsByTagName('a');
+            var json = null;
+
+            for( var i = 0; i < aA.length; i++ ){
+
+                    aA[i].onclick =function() {
+                        xmlh('index.php?id=' + this.dataset.id);
+                    }
+            }
+
+            function xmlh(url){
+                var xml = new XMLHttpRequest();
+                xml.open('get',url);
+                xml.send();
+                xml.onreadystatechange = function(){//onreadystatechange
+                    if(xml.readyState == 4){//readyState  0.1.2.3.4
+                        if(xml.status == 200){//status   200
+                        		var i = 0;
+                            json = xml.responseText;//这不是一个方法，所以没有后面的括号
+                            json = JSON.parse(json);
+                            for( var attr in json ){
+                                var oSpan = aP[i].getElementsByTagName('span')[0];
+                                var oStrong = aP[i].getElementsByTagName('strong')[0];
+                                oSpan.innerHTML+= attr;
+                                oStrong.innerHTML+= json[attr];
+                                i++;
+
+                                //进行for in循环，搞一个i来累加遍历DOM对象
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    </script>
+</html>

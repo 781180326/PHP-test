@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+ <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBzE9xAESye6Kde-3hT-6B90nfwUkcS8Yw&sensor=false"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="gmap.min.js"></script>
+
+  </head>
+  <body>
+    <div class="map"></div>
+  <script>
+
+    $('.map')
+      .gmap3({
+        address:"Paris, France",
+        zoom: 10,
+        mapTypeControl: true,
+        navigationControl: true,
+        scrollwheel: true,
+        streetViewControl: true
+      });
+  </script>
+
+  </body>
+</html>

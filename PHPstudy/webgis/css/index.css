@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*主页样式*/
+	/* 块 外部包装*/
+	body{text-align:center;margin:0 auto;}
+	.wrap{margin:0 auto;text-align: center;width:80%;margin-bottom:5px;}
+	
+	/*  头部  */
+	#header:after {content: "\0020";display: block;height: 0;clear: both;}
+	#header .icon{width:220px;height:40px;margin-left:100px;background:url(../image/icon.png) no-repeat;float:left;}
+	#header .nav{float:right;margin-right:50px;}
+	#header .nav li{float:left;margin-right:10px;height:40px;line-height:40px;text-align:center;}
+	
+	/* 轮播图 */
+	#pic-href{margin:0 auto;width:900px;height:480px;position:relative;overflow:hidden;}
+	#pic-href ul{width:3600px;height:480px;margin:0 auto;position:absolute;left:0;top:0;}
+	#pic-href ul li{width:900px;height:480px;float:left;}
+	#pic-href ul li a{width:900px;height:480px;display:block;}
+	#pic-href ul li a img{width:900px;height:480px;}
+	/*下面设置了不可选中文字，不然界面丑陋*/
+	#pic-href .btn{position:absolute;width:30px;height:30px;top:225px;background:#ccc;line-height:30px;
+				   cursor:pointer;-moz-user-select:none;-webkit-user-select:none;user-select:none;opacity:0.5;}
+	#pic-href .btn:hover{opacity:1;}
+	#pic-href  #prev{left:10px;}
+	#pic-href  #next{right:10px;}
+	#pic-href p{width:inherit;height:30px;position:absolute;bottom:10px;text-align:center;}
+	#pic-href p span{width:30px;height:30px;display:inline-block;margin-right:10px;background:#ccc;border-radius::50%;}
+	
+	/* 主体 */
+	#content{height:600px;width:100%;}
+	#content #search{width:80%;height:40px;margin:0 auto;text-align:center;line-height:40px;}
+	#content #search input{width:60%;height:30px;line-height:30px;border-radius:4px;padding:0 20px;}
+	#content #search .search{display:inline-block;width:10%;line-height:30px;background:#ccc;
+							border-radius:50%;box-shadow:0 0 6px #5155b9;}
+	#content #recommend {width:60%;margin:10px auto;}
+	#content #recommend strong{float:left;margin-right:20px;line-height:30px;}
+	#content #recommend ul {height:30px;line-height:30px;text-align:center;}
+	#content #recommend ul li {float:left;display:inline-block;margin-right:10px;line-height:30px;list-style:none;cursor:pointer 	;}
+	#content #recommend ul li:hover{text-decoration:underline;}
+	#content #recommend ul .action {background:#eee;border:solid 1px #eee;border-bottom:none;border-radius:4px 4px 0 0;}
+	#content #recommend .show {width:90%;}
+	#content #recommend .show:after {content: "\0020";display: block;height: 0;clear: both;}
+	#content #recommend .show img {float:left;margin:10px 10px;diaplay:block;width:45%;height:180px;}
+	#content #recommend .show .img_main{height:380px;}
+	
+	/* 尾部 */
+	#footer{height:40px;line-height:40px;text-align: center;}
